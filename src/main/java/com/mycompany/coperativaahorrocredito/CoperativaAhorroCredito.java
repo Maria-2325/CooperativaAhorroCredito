@@ -9,7 +9,7 @@ public class CoperativaAhorroCredito {
         Cuenta objCuenta1 = new Cuenta();
         Cuenta objCuenta2 = new Cuenta();
         
-       /* //Persona 1
+        //Persona 1
         //Registro de la Persona
         objPersona1.registrarPersona(objCuenta1);
         
@@ -40,7 +40,7 @@ public class CoperativaAhorroCredito {
         objCuenta2.retirar();
         
         //Imprimir Datos de la cuenta
-        objCuenta2.imprimir(objPersona2);*/
+        objCuenta2.imprimir(objPersona2);
         
         //Cerrar cuenta
         objCuenta2.cerrarCuenta();
