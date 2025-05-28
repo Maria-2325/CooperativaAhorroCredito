@@ -7,7 +7,7 @@ public class Cuenta {
     // Persona objPersona = new Persona();
     Scanner licet = new Scanner(System.in);
 
-    public int numeroCuenta;
+    public int numeroCuenta = 1000;
     public Double saldo = 0d;
     public String titular;
     public TipoCuenta tipoCuenta;
@@ -37,90 +37,117 @@ public class Cuenta {
         opcion = licet.nextInt();
         if (opcion == 1) {
             this.tipoCuenta = tipoCuenta.AHORRO;
-            System.out.println(this.tipoCuenta);
+            System.out.println("Ha seleccionado: " + this.tipoCuenta);
         } else {
             this.tipoCuenta = tipoCuenta.CORRIENTE;
+            System.out.println("Ha seleccionado: " + this.tipoCuenta);
         }
         String opcionSaldo;
 
-        System.out.print("¿ABRIR CUENTA CON SALDO? Si/No: ");
+        System.out.print("ABRIR CUENTA CON SALDO? Si/No: ");
         opcionSaldo = licet.next();
 
         if (opcionSaldo.equalsIgnoreCase("si")) {
             depositar();
+            System.out.println("Cuenta creada exitosamente\n");
+            contadorCuenta();
 
         } else {
-            System.out.println("Cuenta creada exitosamente ");
+            System.out.println("Cuenta creada exitosamente\n");
+            contadorCuenta();
         }
 
     }
-// Depositar
+    
+    
+    public int contadorCuenta(){
+        // this.numeroCuenta++;
+        return this.numeroCuenta++;
+    }
+    
+    public String validarTransacciones(boolean estado){
+        if (estado){
+            return "Operacion realizada existosamente";
+        } else {
+            return "ERROR: Operacion fallida";
+        }
+    }
+    
+    // Depositar
 
     public void depositar() {
 
         double monto = 0d;
+        boolean william;
 
-        System.out.println("----------DEPOSITAR----------");
+        System.out.println("\n----------DEPOSITAR----------");
         System.out.print("Ingrese el monto a depositar: ");
         monto = licet.nextDouble();
         if (monto > 0) {
             this.saldo += monto;
-            System.out.println("Deposito exitoso.");
-            System.out.println("Saldo actual: " + saldo);
+            System.out.println("Saldo actual: " + this.saldo);
+            System.out.println(validarTransacciones(true));
         } else {
             System.out.println("El monto debe ser mayor a cero");
+            System.out.println(validarTransacciones(false));
+            
         }
     }
     // Retirar
     
     public void retirar() {
         double monto = 0d;
-        System.out.println("----------RETIRAR----------");
+        System.out.println("\n----------RETIRAR----------");
+        System.out.print("Ingrese el monto a retirar: ");
+        monto = licet.nextDouble();
         if (monto > 0) {
-            if (saldo > 0) {
+            if (monto <= this.saldo) {
                 saldo = saldo - monto;
-                System.out.println("Retiro exitoso. ");
-                System.out.println("Saldo actual: " + saldo);
+                System.out.println("Saldo actual: " + this.saldo);
+                System.out.println(validarTransacciones(true));
             } else {
-                System.out.println("Saldo insuficiente");
+                System.out.println("Saldo insuficiente, no tienes dineroooooooooo");
+                System.out.println(validarTransacciones(false));
             }
         } else {
-            System.out.println("El monto debe ser mayor a cero ");
+            System.out.println("El monto debe ser mayor a cero");
+            System.out.println(validarTransacciones(false));
         }
-        System.out.println(" ");
+ 
     }
 
     //Tranferir
     public void transferir(Cuenta destino) {
         double monto = 0d;
-
-        System.out.println("----------TRANSFERIR----------");
+        System.out.println("\n----------TRANSFERIR----------");
+        System.out.println("Ingrese el monto a transferir: ");
+        monto = licet.nextDouble();
         if (monto > 0) {
-            if (saldo >= monto) {
+            if (monto <= this.saldo) {
                 this.saldo = this.saldo - monto;
                 destino.saldo = destino.saldo + monto;
-                System.out.println("Transferencia exitosa.");
-                System.out.println("Saldo actual: " + saldo);
+                System.out.println("Saldo actual: " + this.saldo);
+                System.out.println(validarTransacciones(true));
             } else {
                 System.out.println("Saldo insuficiente");
             }
         } else {
-            System.out.println("El monto debe ser mayor a cero");
+            System.out.println(validarTransacciones(false));
         }
-        System.out.println(" ");
+       
     }
 
     public void imprimir(Persona titular) {
-        System.out.println("--------DATOS DE " + titular.nombre + "--------");
-        System.out.println("El numero de cuenta es: " + numeroCuenta);
+        System.out.println("--------DATOS DE LA CUENTA " + titular.nombre + "--------");
+        System.out.println("El numero de cuenta es: " + this.numeroCuenta);
         System.out.println("Su saldo es de: " + saldo);
         System.out.println("Titular: " + titular.nombre);
-        System.out.println("Tipo de cuenta: " + tipoCuenta);
+        System.out.println("Tipo de cuenta: " + this.tipoCuenta);
         System.out.println("------------------------------------");
     }
     public void cerrarCuenta() {
         System.out.print("¿Esta seguro de que desea eliminar su cuenta? si/no: ");
-        String ElimCuenta = licet.nextLine();
+        String ElimCuenta = licet.next();
         if(ElimCuenta.equalsIgnoreCase("si")){
             System.out.println("Su cuenta se ha cerrado con exito");
         }else{

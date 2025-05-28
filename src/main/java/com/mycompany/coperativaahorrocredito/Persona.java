@@ -8,11 +8,11 @@ public class Persona {
 
     // Atributos de la clase Persona
     public String nombre;
-    public int identificacion;
+    public long identificacion;
     public String correo;
 
     // Constructor
-    public Persona(String nombre, int identificacion, String correo) {
+    public Persona(String nombre, long identificacion, String correo) {
         this.nombre = nombre;
         this.identificacion = identificacion;
         this.correo = correo;
@@ -42,20 +42,21 @@ public class Persona {
     }
 
     public void registrarPersonaCompleto() {
+        System.out.println("\n");
         System.out.print("Ingrese sus nombres completos: ");
         this.nombre = entrada.nextLine();
         System.out.print("Ingrese su identificacion: ");
-        this.identificacion = entrada.nextInt();
-        System.out.print("Ingrese su correro electronico: ");
+        this.identificacion = entrada.nextLong();
+        System.out.print("Ingrese su correo electronico: ");
         this.correo = entrada.next();
         System.out.println("Su registro se ha completado exitosamente");
     }
 
     public void imprimir() {
-        System.out.println("--------DATOS DE " + nombre + "--------");
-        System.out.println("Nombre: " + nombre);
-        System.out.println("Identificacion: " + identificacion);
-        System.out.println("Correo: " + correo);
+        System.out.println("\n--------DATOS DEL CLIENTE " + this.nombre + "--------");
+        System.out.println("Nombre: " + this.nombre);
+        System.out.println("Identificacion: " + this.identificacion);
+        System.out.println("Correo: " + this.correo);
         System.out.println("-----------------------------------");
     }
 }
