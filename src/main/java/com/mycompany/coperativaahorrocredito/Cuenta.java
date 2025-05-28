@@ -72,7 +72,7 @@ public class Cuenta {
         }
     }
     // Retirar
-
+    
     public void retirar() {
         double monto = 0d;
         System.out.println("----------RETIRAR----------");
@@ -88,7 +88,6 @@ public class Cuenta {
             System.out.println("El monto debe ser mayor a cero ");
         }
         System.out.println(" ");
-
     }
 
     //Tranferir
@@ -109,7 +108,6 @@ public class Cuenta {
             System.out.println("El monto debe ser mayor a cero");
         }
         System.out.println(" ");
-        return ;
     }
 
     public void imprimir(Persona titular) {

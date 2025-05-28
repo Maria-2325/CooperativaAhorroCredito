@@ -36,6 +36,7 @@ public class Persona {
             registrarPersonaCompleto();
         } else {
             registrarPersonaCompleto();
+            cuenta.abrirCuenta();
         }
 
     }
