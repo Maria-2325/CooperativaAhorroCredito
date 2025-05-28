@@ -78,7 +78,6 @@ public class Cuenta {
     public void depositar() {
 
         double monto = 0d;
-        boolean william;
 
         System.out.println("\n----------DEPOSITAR----------");
         System.out.print("Ingrese el monto a depositar: ");

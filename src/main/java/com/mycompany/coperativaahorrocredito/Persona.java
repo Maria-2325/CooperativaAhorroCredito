@@ -33,15 +33,15 @@ public class Persona {
             this.nombre = entrada.nextLine();
             cuenta.abrirCuenta();
             System.out.println("Para finalizar el proceso complete sus datos, gracias.");
-            registrarPersonaCompleto();
+            registrarPersona();
         } else {
-            registrarPersonaCompleto();
+            registrarPersona();
             cuenta.abrirCuenta();
         }
 
     }
 
-    public void registrarPersonaCompleto() {
+    public void registrarPersona() {
         System.out.println("\n");
         System.out.print("Ingrese sus nombres completos: ");
         this.nombre = entrada.nextLine();
