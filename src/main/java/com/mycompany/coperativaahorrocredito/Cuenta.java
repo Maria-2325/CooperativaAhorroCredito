@@ -117,20 +117,17 @@ public class Cuenta {
     }
 
     //Tranferir
-    public void transferir(Cuenta destino) {
+    public void transferir(Cuenta origen, Cuenta destino) {
         double monto = 0d;
         System.out.println("\n----------TRANSFERIR----------");
-        System.out.println("Ingrese el monto a transferir: ");
+        System.out.print("Ingrese el monto a transferir: ");
         monto = licet.nextDouble();
         if (monto > 0) {
-            if (monto <= this.saldo) {
-                this.saldo = this.saldo - monto;
-                destino.saldo = destino.saldo + monto;
-                System.out.println("Saldo actual: " + this.saldo);
-                System.out.println(validarTransacciones(true));
-            } else {
-                System.out.println("Saldo insuficiente");
-            }
+            origen.saldo = origen.saldo - monto;
+            destino.saldo = destino.saldo + monto;
+            System.out.println("Saldo actual: " + origen.saldo);
+            System.out.println(validarTransacciones(true));
+            
         } else {
             System.out.println(validarTransacciones(false));
         }
